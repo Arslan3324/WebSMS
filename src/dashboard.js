@@ -12,6 +12,16 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import { Dashboard } from './DashboardContent';
+import { useState } from 'react';
+import { Student } from './student';
+import { Teacher } from './Teacher';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import { DropdownButton, Dropdown} from 'react-bootstrap';
+import ClassIcon from '@material-ui/icons/Class';
 
 const drawerWidth = 240;
 
@@ -41,13 +51,37 @@ const useStyles = makeStyles((theme) => ({
 export default function ClippedDrawer() {
   const classes = useStyles();
 
+  const [toolbar, settoolbar] = useState('Dashboard')
+  const handle=()=>
+  {
+    switch(toolbar)
+    {
+      case 'Dashboard':
+        return (
+          <Dashboard/>
+        )
+        case 'Student':
+          return (
+            <Student/>
+          )
+          case 'Teacher':
+          return (
+            <Teacher/>
+          )
+    }
+  }
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
+          <div>
+          <h2><ion-icon name="school"></ion-icon></h2>
+          </div>
+        
           <Typography variant="h6" noWrap>
-            Clipped drawer
+            
+            School Managment System
           </Typography>
         </Toolbar>
       </AppBar>
@@ -61,41 +95,40 @@ export default function ClippedDrawer() {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
+          
+              <ListItem button onClick={e=>settoolbar("Dashboard")}>
+                <ListItemIcon><DashboardIcon/></ListItemIcon>
+                <ListItemText primary={'Dashboard'} />
               </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
+              <ListItem button onClick={e=>settoolbar("Student")}>
+                <ListItemIcon><PermIdentityIcon/> </ListItemIcon>
+                <ListItemText primary={'Student'} />
               </ListItem>
-            ))}
+              <ListItem button onClick={e=>settoolbar("Teacher")}>
+                <ListItemIcon><SupervisedUserCircleIcon/></ListItemIcon>
+                <ListItemText primary={'Teacher'} />
+              </ListItem>
+              <ListItem button onClick={e=>settoolbar("Attendence")}>
+                <ListItemIcon><CheckBoxIcon/></ListItemIcon>
+                <ListItemText primary={'Attendence'} />
+              </ListItem>
+              <ListItem button onClick={e=>settoolbar("Attendence")}>
+                <DropdownButton id="dropdown-basic-button" title="Classes" variant="light" style={{width:"40px"}}>
+                 <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                  <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                </DropdownButton>
+              </ListItem>
+
+              
+              
           </List>
+          
         </div>
       </Drawer>
       <main className={classes.content}>
         <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-          facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-          gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-          donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-          Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-          imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-          arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-          donec massa sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Jabbar
-        </Typography>
+        {handle()}
       </main>
     </div>
   );
