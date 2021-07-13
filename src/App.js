@@ -4,12 +4,18 @@ import React from 'react';
 import PermanentDrawerRight from './dashboard'
 
 class App extends React.Component{
-
+  
   render(){
-    return (
-    <PermanentDrawerRight/>
+
+
+    return(
+
+      <PermanentDrawerRight/>
+
     )
+
   }
+
 }
 
 export default App;
