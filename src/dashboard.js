@@ -12,6 +12,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+
 import { Dashboard } from './DashboardContent';
 import { useState } from 'react';
 import { Student } from './student';
@@ -22,6 +23,7 @@ import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import { DropdownButton, Dropdown} from 'react-bootstrap';
 import ClassIcon from '@material-ui/icons/Class';
+
 
 const drawerWidth = 240;
 
@@ -51,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ClippedDrawer() {
   const classes = useStyles();
 
+
   const [toolbar, settoolbar] = useState('Dashboard')
   const handle=()=>
   {
@@ -70,11 +73,13 @@ export default function ClippedDrawer() {
           )
     }
   }
+
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
+
           <div>
           <h2><ion-icon name="school"></ion-icon></h2>
           </div>
@@ -82,6 +87,7 @@ export default function ClippedDrawer() {
           <Typography variant="h6" noWrap>
             
             School Managment System
+
           </Typography>
         </Toolbar>
       </AppBar>
@@ -95,6 +101,7 @@ export default function ClippedDrawer() {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
+
           
               <ListItem button onClick={e=>settoolbar("Dashboard")}>
                 <ListItemIcon><DashboardIcon/></ListItemIcon>
@@ -124,11 +131,14 @@ export default function ClippedDrawer() {
               
           </List>
           
+
         </div>
       </Drawer>
       <main className={classes.content}>
         <Toolbar />
+
         {handle()}
+
       </main>
     </div>
   );
