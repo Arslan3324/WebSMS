@@ -42,11 +42,11 @@ export class Student extends React.Component{
              <table class="table table-hover">
              <thead>
                <tr>
-                 <th scope="col">Student ID</th>
-                 <th scope="col">First Name</th>
-                 <th scope="col">Last Name</th>
-                 <th scope="col">Fathers Name</th>
-                 <th scope="col">Date of Birth</th>
+                 <th scope="col">Student_ID</th>
+                 <th scope="col">First_Name</th>
+                 <th scope="col">Last_Name</th>
+                 <th scope="col">Fathers_Name</th>
+                 <th scope="col">DoB</th>
                  <th scope="col">Class</th>
                  <th scope="col">Address</th>
                  <th scope="col">Phone</th>

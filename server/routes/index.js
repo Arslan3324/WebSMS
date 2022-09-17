@@ -4,7 +4,7 @@ const db = require('../db')
 const router = express.Router();
 
 
-
+//post student data
 router.post('/postStudents',async function(req,res,next){
 
     try{
@@ -17,6 +17,7 @@ router.post('/postStudents',async function(req,res,next){
     }
 })
 
+//get all students
 router.get('/getAllStudents',async(req,res,next)=>{
 try{
     let results = await db.smsDB.all()
@@ -28,7 +29,7 @@ catch(e){
 }
 });
 
-
+//get count students
 router.get('/getCountStudents',async(req,res,next)=>{
     try{
         let results = await db.countStudents.all()
